@@ -1,0 +1,35 @@
+<form class="my-form" #form="ngForm" (submit)="onSubmit()" >
+    <mat-form-field class="full-width">
+           <mat-label>Type Name</mat-label>
+           <input  matInput  placeholder="Device name"  name="device name" [(ngModel)]="type.name" required>
+        </mat-form-field>
+           <mat-form-field class="full-width">
+            <mat-select placeholder="Parent Type" name="parent type" [(ngModel)]="type.parentTypeId" (selectionChange)="onTypeChanged($event)">
+              <mat-option *ngFor="let type of types" [value]="type.id"  >
+               {{type.name}}
+              </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <ul>
+            <li *ngFor="let prop of type.typeProperties; let i = index">
+              <mat-form-field>
+                  <input matInput  name="{{i}}"  [(ngModel)]=" type.typeProperties[i].name">
+              </mat-form-field>
+            </li>
+        </ul>
+        <button *ngIf="addPropertyActive === false" mat-flat-button color="primary" type="button" class="button full-width" (click)="onAddProperty()" >
+         Add Property
+       </button>
+<div *ngIf="addPropertyActive">
+      <mat-form-field class="full-width">
+          <input matInput placeholder="Add property" name="prop" [(ngModel)]="property.name">
+          <button mat-flat-button color="primary" type="button"  class="button full-width" (click)="onAddingProperty()" >
+              Add 
+            </button>
+     </mat-form-field>
+</div>
+
+        <button class="full-width save" mat-flat-button  type="submit"  [disabled]="form.invalid" >Save</button>
+        <hr>
+        <button class="full-width cancel" type="button"  mat-flat-button (click)="onCancel()" >Cancel</button>
+ </form>

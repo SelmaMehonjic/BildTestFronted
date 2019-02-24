@@ -1,0 +1,28 @@
+<form class="my-form" #form="ngForm" (submit)="onSubmit()" >
+    <mat-form-field class="full-width">
+           <mat-label>Device Name</mat-label>
+           <input  matInput  placeholder="Device name"  name="device name" [(ngModel)]="device.name" required>
+        </mat-form-field>
+ <div *ngIf="device.id === null">
+      <mat-form-field class="full-width">
+            <mat-select placeholder="Device Type" name="device type" [(ngModel)]="device.deviceTypeId" (selectionChange)="onTypeChanged($event)">
+              <mat-option *ngFor="let type of types" [value]="type.id" (click)="getChoosedType(type.id)"  >
+               {{type.name}}
+              </mat-option>
+            </mat-select>
+        </mat-form-field>
+ </div>
+<div *ngFor="let value of device.propertyValues" >
+          {{value.name}}
+          <mat-form-field class="full-width">
+                <input  matInput  placeholder="Value"  name="value" [(ngModel)]="value.value"  required>
+             </mat-form-field>
+</div>
+        <mat-form-field class="full-width">
+           <mat-label>Price</mat-label>
+           <input  matInput  placeholder="Price" name="price" [(ngModel)]="device.price" required>
+        </mat-form-field>
+        <button class="full-width save" mat-button  type="submit"  [disabled]="form.invalid" >Save</button>
+        <hr>
+        <button class="full-width cancel" type="button"  mat-button (click)="onCancel()" >Cancel</button>
+ </form>

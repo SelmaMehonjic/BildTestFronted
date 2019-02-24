@@ -1,0 +1,47 @@
+<form class="my-form" #form="ngForm" (submit)="onSubmit()">
+        <mat-form-field class="full-width">
+               <input  matInput  placeholder="Device name or type"  name="search" [(ngModel)]="search.FilterBy" >
+            </mat-form-field>
+
+            <mat-form-field class="full-width">
+               <input  matInput  placeholder="Property value" name="value" [(ngModel)]="search.PropertyValue">
+            </mat-form-field>
+
+            <mat-form-field class="full-width">
+                    <input  matInput  placeholder="Greather Than Price" name="greather" [(ngModel)]="search.GreatherThan">
+                 </mat-form-field>
+                 
+            <mat-form-field class="full-width">
+                    <input  matInput  placeholder="Greather Than Or Equal Price" name="freatherorequal" [(ngModel)]="search.GreatherThanOrEqual">
+                 </mat-form-field>
+                 
+            <mat-form-field class="full-width">
+                    <input  matInput  placeholder="Less Than Price" name="less" [(ngModel)]="search.LessThan">
+                 </mat-form-field>
+                 
+            <mat-form-field class="full-width">
+                    <input  matInput  placeholder="Less Or Equal Than Price" name="lessorequal" [(ngModel)]="search.LessThanOrEqual">
+                 </mat-form-field>
+
+                 <mat-form-field class="full-width">
+                    <input  matInput  placeholder="After Date" name="after" [(ngModel)]="search.AfterDate">
+                 </mat-form-field>
+                 
+            <mat-form-field class="full-width">
+                    <input  matInput  placeholder="After Date Or Equal" name="afterorequal" [(ngModel)]="search.AfterOrEqualDate">
+                 </mat-form-field>
+                 
+                 <mat-form-field class="full-width">
+                  <input  matInput  placeholder="Before Date" name="before" [(ngModel)]="search.BeforeDate">
+               </mat-form-field>
+               
+          <mat-form-field class="full-width">
+                  <input  matInput  placeholder="Before Date Or Equal" name="beforeorequal" [(ngModel)]="search.BeforeOrEqualDate">
+               </mat-form-field>
+               
+          <mat-form-field class="full-width">
+                  <input  matInput  placeholder="Page number" name="page" [(ngModel)]="search.PageNumber" required>
+               </mat-form-field>
+               
+            <button class="full-width save" mat-button  type="submit"  [disabled]="form.invalid" >Search</button>
+     </form>

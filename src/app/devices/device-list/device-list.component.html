@@ -1,0 +1,63 @@
+<div class="dialogs" fxLayout fxLayoutAlign="center center">
+  <button mat-flat-button color="primary" class="button" (click)="openDialog()">
+    Add Device
+  </button>
+  <button mat-flat-button color="primary" class="button" (click)="openSearchDialog()">
+    Filter By...
+  </button>
+  <button *ngIf="searchData !== undefined" mat-flat-button color="primary" class="button" (click)="onClearSearch()">
+    Clear search data
+  </button>
+</div>
+<table mat-table [dataSource]="dataSource" matSort >
+  <ng-container matColumnDef="CreatedDate">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>CreatedDate</th>
+    <td mat-cell *matCellDef="let element">{{ element.createdDate | date }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="Name">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+    <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+  </ng-container>
+  <ng-container matColumnDef="DeviceType">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>DeviceType</th>
+    <td mat-cell *matCellDef="let element">{{ element?.deviceType.name }}</td>
+  </ng-container>
+  <ng-container matColumnDef="Price">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Price</th>
+    <td mat-cell *matCellDef="let element">{{ element.price }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="Details">
+    <th mat-header-cell *matHeaderCellDef>Details</th>
+    <td mat-cell *matCellDef="let element">
+      <button  mat-icon-button color="primary" (click)="openDialogInfo(element.id)" >
+        <mat-icon class="mat-18">reorder</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Update">
+    <th mat-header-cell *matHeaderCellDef>Update</th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-icon-button color="accent" (click)="openDialog(element.id)">
+        <mat-icon class="mat-18" >system_update</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Delete">
+    <th mat-header-cell *matHeaderCellDef>Delete</th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-icon-button color="warn" (click)="onDelete(element.id)">
+        <mat-icon class="mat-18">delete</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>
+
+<mat-paginator style="width: 100%"  fxLayout fxLayoutAlign="center center" [pageSize]="pageSize"  [pageSizeOptions]="[1,2,3,4]" #paginator (page)="getNext($event)" >
+  </mat-paginator>

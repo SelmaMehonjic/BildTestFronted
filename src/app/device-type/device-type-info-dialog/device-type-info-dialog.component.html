@@ -1,0 +1,6 @@
+<mat-nav-list>
+    <p *ngIf="type.parentTypeName !== null">Parent type : {{type.parentTypeName}}</p>
+    <ul *ngFor="let property of properties">
+            <li mat-line>{{property.name}}</li>
+        </ul>
+        </mat-nav-list>

@@ -1,0 +1,25 @@
+
+table {
+    width: 80%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    min-width: 500px;
+    margin: auto
+}
+ 
+th.mat-header-cell {
+    text-align: left;
+    max-width: 300px;
+}
+mat-paginator {
+    width: 80%;
+    margin: auto
+
+}
+.button {
+    margin-right:20px !important
+}
+.dialogs {
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
