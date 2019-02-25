@@ -3,13 +3,15 @@
            <mat-label>Type Name</mat-label>
            <input  matInput  placeholder="Device name"  name="device name" [(ngModel)]="type.name" required>
         </mat-form-field>
-           <mat-form-field class="full-width">
-            <mat-select placeholder="Parent Type" name="parent type" [(ngModel)]="type.parentTypeId" (selectionChange)="onTypeChanged($event)">
-              <mat-option *ngFor="let type of types" [value]="type.id"  >
-               {{type.name}}
-              </mat-option>
-            </mat-select>
-        </mat-form-field>
+<div *ngIf="data === null">
+  <mat-form-field class="full-width">
+    <mat-select placeholder="Parent Type" name="parent type" [(ngModel)]="type.parentTypeId" (selectionChange)="onTypeChanged($event)">
+      <mat-option *ngFor="let type of types" [value]="type.id"  >
+       {{type.name}}
+      </mat-option>
+    </mat-select>
+</mat-form-field>
+</div>
         <ul>
             <li *ngFor="let prop of type.typeProperties; let i = index">
               <mat-form-field>

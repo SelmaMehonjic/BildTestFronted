@@ -58,6 +58,7 @@ import { DeviceTypeModel } from 'src/app/models/deviceType.model';
     }
 
     onCancel() {
+      console.log(this.type)
       this.dialogRef.close();
     }
 
